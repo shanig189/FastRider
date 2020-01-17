@@ -1,0 +1,23 @@
+input{
+    width: 60%;
+    height: 25px;
+    padding-left: 2%;
+    color: black;
+    font-weight: 600;
+}
+
+button{
+    width: 15%;
+    height: 31.7px;
+    background: #4c4c4b;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+::placeholder { 
+    color: black;
+    font-weight: 600;
+    font-size: 12px;
+}
+  

@@ -1,0 +1,21 @@
+.instruction_ctn{
+    display: flex;
+    flex-flow: column;
+    margin-right: 1%;
+    width: 33.3333333333%;
+}
+
+img{
+    width: 40px;
+    background: #373737;
+    border-radius: 30px;
+    padding: 1%;
+    margin: 2% auto; 
+}
+
+span{
+    font-size: 12px;
+    color: #656565;
+    width: 80%;
+    margin: 0 auto;
+}
