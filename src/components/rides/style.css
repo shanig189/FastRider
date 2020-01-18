@@ -20,4 +20,11 @@ button{
     font-weight: 600;
     font-size: 12px;
 }
+
+.rides_data_ctn{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 3%;
+}
   

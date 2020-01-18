@@ -1,0 +1,42 @@
+.ride_ctn{
+    display: flex;
+    flex-flow: column;
+    width: 22%;
+    cursor: pointer;
+    background: #373737;
+    margin: 1%;
+    padding: 2px;
+    position: relative;
+    height: 130px;
+}
+
+.time_Ticket_Ctn, .time_Ticket_Ctn div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.time_Ticket_Ctn{
+    padding: 0 5%;
+}
+
+.zone_name{
+    position: absolute;
+    right: 5px;
+    font-size: 11px;
+    width: 100%;
+    text-align: right;
+    margin-top: 4%;
+}
+
+.ride_name{
+    color: white;
+    padding: 10% 15% 0;
+}
+
+.time_Ticket_icon{
+    width: 20px;
+}
+
+.time_Ticket_content{
+    margin-top: 3px;
+}

@@ -1,16 +1,16 @@
 import React from 'react';
 import Instruction from '../instruction';
-import { instructions } from '../../utils/enums';
+import { instructions } from '../../utils/data';
 import './style.css';
 
 const Instructions = () => {
-    const getInstructions = instructions.map((instruction, index) =>
+    const instructionsData = instructions.map((instruction, index) =>
         <Instruction key={index} instructionData={instruction} />
     );
 
     return(
         <div className="instructions_ctn">
-            {getInstructions}
+            {instructionsData}
         </div>
     )
 }
