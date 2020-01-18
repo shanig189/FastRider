@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Ride from '../ride';
+import { useHistory } from 'react-router-dom';
 import { getPinCode, setPinCode } from '../../services/pinActions';
 import { pinValidation } from '../../helpers/validations';
 import { getRidesData } from '../../services/api';
+import Ride from '../ride';
 import './style.css'
 
 const Rides = () => {
+    let history = useHistory();
     const [rides, setRides] = useState([]);
     const [pin, setPin] = useState(getPinCode());
     const [selectedRideId, setSelectedRideId] = useState(null);
@@ -34,10 +36,9 @@ const Rides = () => {
         e.preventDefault();
         if(selectedRideId && pinValidation(pin)){
             setPinCode(pin);
-            //redirect
+            history.push(`/ticket/${pin}/${selectedRideId}`);
         }
     }
-
 
     return(
         <div className="rides_ctn">
