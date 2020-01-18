@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { getTimeFromDateString } from '../../helpers/time';
 import clock from '../../assets/images/clock.png';
 import ticket from '../../assets/images/ticket.png';
 import './style.css'
 
-const Ride = ({ rideData, onSelectRide}) => {
-    const { name, remaining_tickets, return_time } = rideData;
+let isFirstTimeClick = true;
+let previosId = null;
+
+const Ride = ({ rideData, onSelectRide }) => {
+    const { id, name, remaining_tickets, return_time } = rideData;
     const rideDataZone = { name: '', color: ''};
 
     if(rideData.zone){
@@ -14,12 +17,26 @@ const Ride = ({ rideData, onSelectRide}) => {
         rideDataZone.color = color;
     }
 
+    const handleRideClick = (e, color, id) => {
+        if(isFirstTimeClick){
+            isFirstTimeClick = false;
+            previosId = id;
+        }else{
+            if(previosId !== id){
+                document.getElementById(previosId).style.background = '#373737';
+                previosId = id;
+            }
+        }
+        e.target.style.background = color;
+        onSelectRide(id);
+    }
+
     const ride_zone_color = {
         borderTop: `4px solid ${rideDataZone.color}`
     }
 
     return(
-        <div className="ride_ctn" style={ride_zone_color}>
+        <div className="ride_ctn" style={ride_zone_color} id={id } onClick={(e) => {handleRideClick(e, rideDataZone.color, id)}}>
            <span className="zone_name">{rideDataZone.name}</span>
            <h4 className="ride_name">{name}</h4>
            <div className="time_Ticket_Ctn">

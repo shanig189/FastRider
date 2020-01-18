@@ -13,6 +13,7 @@
 .time_Ticket_Ctn, .time_Ticket_Ctn div{
     display: flex;
     justify-content: space-between;
+    pointer-events: none;
 }
 
 .time_Ticket_Ctn{
@@ -26,15 +27,18 @@
     width: 100%;
     text-align: right;
     margin-top: 4%;
+    pointer-events: none;
 }
 
 .ride_name{
     color: white;
     padding: 10% 15% 0;
+    pointer-events: none;
 }
 
 .time_Ticket_icon{
     width: 20px;
+    background: none;
 }
 
 .time_Ticket_content{
