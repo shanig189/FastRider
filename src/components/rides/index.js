@@ -13,6 +13,7 @@ const Rides = () => {
     const [rides, setRides] = useState([]);
     const [pin, setPin] = useState(getPinCode());
     const [selectedRideId, setSelectedRideId] = useState(null);
+    const [message, setMessage] = useState('');
 
     const handleMobile = () => {
         document.addEventListener('touchmove', () => {
@@ -53,16 +54,27 @@ const Rides = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(selectedRideId && isValidPinCode(pin)){
+        if(!pin){
+            setMessage('Pin cannot be empty.')
+        }else if(!isValidPinCode(pin)){
+            setMessage('Pin not valid.')
+        }else if(!selectedRideId){
+            setMessage('Please select a ride.')
+        }else{
             setPinCode(pin);
+            setMessage('');
             history.push(`/ticket/${pin}/${selectedRideId}`);
         }
     }
 
     return(
         <div className="rides_ctn" >
+            {
+                message && 
+                (<div style={{color: '#FF5722'}}>{message}</div>)
+            }
             <form onSubmit={handleSubmit}>
-                <input className="submit_input" type="text" placeholder="#PIN" value={pin} onChange={(e) => { setPin(e.target.value) }}/>
+                <input className="submit_input" type="text" placeholder="#PIN" value={pin} onChange={(e) => { setPin(e.target.value); setMessage(''); }}/>
                 <button className="submit_btn" id="submitBtn">SUBMIT</button> 
             </form>
             <div className="rides_data_ctn" id="ridesDataCtn">

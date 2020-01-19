@@ -14,7 +14,6 @@ const Ticket = () => {
     useEffect(() => {
         const fetchData = async () => {
             const ticket = await getTicketData({ pin, ride_id });
-            console.log("ticket", ticket)
             if(ticket.message){
                 setMessage(ticket.message);
             }else{
