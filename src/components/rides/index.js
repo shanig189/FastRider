@@ -43,8 +43,8 @@ const Rides = () => {
     return(
         <div className="rides_ctn">
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="#PIN" value={pin} onChange={(e) => { setPin(e.target.value) }}/>
-                <button>SUBMIT</button> 
+                <input className="submit_input" type="text" placeholder="#PIN" value={pin} onChange={(e) => { setPin(e.target.value) }}/>
+                <button className="submit_btn">SUBMIT</button> 
             </form>
             <div className="rides_data_ctn">
                 {ridesData}
