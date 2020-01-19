@@ -2,10 +2,15 @@
     margin-top: 10%;
 }
 
-.message{
-    color: #FF5722;
+.message_ctn{
     background: #373737;
     padding: 4%;
+    width: 65%;
+    margin: 0 auto;
+}
+
+.message{
+    color: #FF5722;
     font-size: 14px;
 }
 

@@ -30,8 +30,10 @@ const Ticket = () => {
     return(
         <div className="ticket_ctn">
             {
-                message !== '' ? 
-                <span className="message">{message}</span>
+                message !== '' ?
+                <div className="message_ctn">
+                    <span className="message">{message}</span>
+                </div> 
                 :
                 Object.entries(ticket).length > 0 && 
                 (<div className="thanks">
