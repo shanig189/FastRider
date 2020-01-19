@@ -38,16 +38,16 @@ const Ticket = () => {
                     <Instruction instructionData={thanks}/>
                     <div className="ride_ctn ticket_data_ctn" style={ride_zone_color}>
                         <div className="ride_zone_ctn">
-                            <span className="ride_name">{ticket.ride.name}</span>
-                            <span className="zone_name">{ticket.ride.zone.name}</span>
+                            <span className="ticket_ride_name">{ticket.ride.name}</span>
+                            <span className="ticket_zone_name">{ticket.ride.zone.name}</span>
                         </div>
-                        <div className="time_ctn">
+                        <div className="ticket_time_ctn">
                             <span className="return_time_txt">Return At</span>
-                            <span className="return_time_val">{getTimeFromDateString(ticket.ride.return_time)}</span>
+                            <span className="return_time_val">{getTimeFromDateString(ticket.return_time)}</span>
                         </div>
                         <div className="access_code_ctn">
                             <span className="access_code_txt">Use Access Code</span>
-                            <span className="access_code_val">{ticket.ride.access_code}</span>
+                            <span className="access_code_val">{ticket.access_code}</span>
                         </div>
                     </div>
                 </div>)

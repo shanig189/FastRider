@@ -28,6 +28,7 @@
     text-align: right;
     margin-top: 4%;
     pointer-events: none;
+    color: #656565;
 }
 
 .ride_name{
@@ -38,9 +39,11 @@
 
 .time_Ticket_icon{
     width: 20px;
-    background: none;
+    background: none;   
 }
 
 .time_Ticket_content{
     margin-top: 3px;
+    color: #656565;
+    font-size: 11px;    
 }

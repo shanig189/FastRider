@@ -9,7 +9,7 @@
     font-size: 14px;
 }
 
-.thanks, .time_ctn, .access_code_ctn{
+.thanks, .ticket_time_ctn, .access_code_ctn{
     display: flex;
     flex-flow: column;
 }
@@ -29,25 +29,26 @@
     position: relative;
 }
 
-.ride_name, .zone_name{
+.ticket_ride_name, .ticket_zone_name{
     font-size: 11px;
     position: absolute;
     top: 3px;
     padding: 0 !important;
 }
 
-.ride_name{
+ .ticket_ride_name{
     left: 6px;
     font-weight: bold;
+    color: white;
 }
 
-.zone_name{
+.ticket_zone_name{
     color: #656565;
     right: 6px;
     margin: 0 !important;
-}
+} 
 
-.time_ctn{
+ .ticket_time_ctn{
     margin-top: 35px;
 }
 
