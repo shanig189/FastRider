@@ -48,6 +48,7 @@
         transform: translateX(-88%);
         height: 60px;
         font-size: 22px;
+        visibility: hidden;
     }
 
     .rides_data_ctn{

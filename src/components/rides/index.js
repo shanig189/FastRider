@@ -1,18 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import useMobileDetect from 'use-mobile-detect-hook';
 import { useHistory } from 'react-router-dom';
 import { getPinCode, setPinCode } from '../../services/pinActions';
-import { pinValidation } from '../../helpers/validations';
+import { isValidPinCode, isElementAtTop } from '../../helpers/validations';
 import { getRidesData } from '../../services/api';
 import Ride from '../ride';
 import './style.css'
 
 const Rides = () => {
     let history = useHistory();
+    const detectMobile = useMobileDetect();
     const [rides, setRides] = useState([]);
     const [pin, setPin] = useState(getPinCode());
     const [selectedRideId, setSelectedRideId] = useState(null);
 
+    const handleMobile = () => {
+        document.addEventListener('touchmove', () => {
+            const ridesDataCtn = document.getElementById('ridesDataCtn');
+            const submitBtn = document.getElementById('submitBtn');
+            if(isElementAtTop(ridesDataCtn)){
+                submitBtn.style.visibility = 'visible';
+            }else{
+                submitBtn.style.visibility = 'hidden';
+                
+            }
+        })
+    }
+
     useEffect(() => {
+        if(detectMobile.isMobile()){
+            handleMobile();
+        }
+
         const fetchData = async () => {
             const rides = await getRidesData();
             if(rides.message){
@@ -34,19 +53,19 @@ const Rides = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(selectedRideId && pinValidation(pin)){
+        if(selectedRideId && isValidPinCode(pin)){
             setPinCode(pin);
             history.push(`/ticket/${pin}/${selectedRideId}`);
         }
     }
 
     return(
-        <div className="rides_ctn">
+        <div className="rides_ctn" >
             <form onSubmit={handleSubmit}>
                 <input className="submit_input" type="text" placeholder="#PIN" value={pin} onChange={(e) => { setPin(e.target.value) }}/>
-                <button className="submit_btn">SUBMIT</button> 
+                <button className="submit_btn" id="submitBtn">SUBMIT</button> 
             </form>
-            <div className="rides_data_ctn">
+            <div className="rides_data_ctn" id="ridesDataCtn">
                 {ridesData}
             </div>
         </div>
