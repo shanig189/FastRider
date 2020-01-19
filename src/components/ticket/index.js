@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { getTicketData } from '../../services/api';
 import { thanks } from '../../utils/data';
+import { getTimeFromDateString } from '../../helpers/time';
 import Instruction from '../instruction';
 import './style.css';
 
@@ -9,36 +10,22 @@ const Ticket = () => {
     const { pin, ride_id } = useParams();
     const [ticket, setTicket] = useState({});
     const [message, setMessage] = useState('');
-    var mock = {
-        "id": 0,
-        "ride": {
-          "id": 0,
-          "zone": {
-            "id": 0,
-            "name": "string",
-            "color": "string"
-          },
-          "name": "string",
-          "remaining_tickets": 0,
-          "return_time": "2020-01-17T23:30:27.041Z"
-        },
-        "access_code": "string",
-        "return_time": "2020-01-17T23:30:27.041Z"
-      }
 
     useEffect(() => {
         const fetchData = async () => {
             const ticket = await getTicketData({ pin, ride_id });
             console.log("ticket", ticket)
-            // if(ticket.message){
-            //     setMessage(ticket.message);
-            // }else{
+            if(ticket.message){
+                setMessage(ticket.message);
+            }else{
                 setMessage('');
                 setTicket(ticket);
-            // }
+            }
         };
         fetchData();
     }, []);
+
+    const ride_zone_color = Object.entries(ticket).length > 0 ? {  borderTop: `4px solid ${ticket.ride.zone.color}` } : {};
 
     return(
         <div className="ticket_ctn">
@@ -46,13 +33,24 @@ const Ticket = () => {
                 message !== '' ? 
                 <span className="message">{message}</span>
                 :
-                <div className="thanks">
+                Object.entries(ticket).length > 0 && 
+                (<div className="thanks">
                     <Instruction instructionData={thanks}/>
-                    <div className="ticket_data_ctn">
-                        <div>
+                    <div className="ride_ctn ticket_data_ctn" style={ride_zone_color}>
+                        <div className="ride_zone_ctn">
+                            <span className="ride_name">{ticket.ride.name}</span>
+                            <span className="zone_name">{ticket.ride.zone.name}</span>
+                        </div>
+                        <div className="time_ctn">
+                            <span className="return_time_txt">Return At</span>
+                            <span className="return_time_val">{getTimeFromDateString(ticket.ride.return_time)}</span>
+                        </div>
+                        <div className="access_code_ctn">
+                            <span className="access_code_txt">Use Access Code</span>
+                            <span className="access_code_val">{ticket.ride.access_code}</span>
                         </div>
                     </div>
-                </div>
+                </div>)
             }
         </div>
     )

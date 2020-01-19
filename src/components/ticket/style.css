@@ -9,7 +9,58 @@
     font-size: 14px;
 }
 
-.thanks{
+.thanks, .time_ctn, .access_code_ctn{
     display: flex;
+    flex-flow: column;
+}
+
+.thanks{
     justify-content: center;
+    align-items: center;
+}
+
+.ticket_data_ctn{
+    width: 220px;
+    margin-top: 6%;
+    cursor: initial;
+}
+
+.ride_zone_ctn{
+    position: relative;
+}
+
+.ride_name, .zone_name{
+    font-size: 11px;
+    position: absolute;
+    top: 3px;
+    padding: 0 !important;
+}
+
+.ride_name{
+    left: 6px;
+    font-weight: bold;
+}
+
+.zone_name{
+    color: #656565;
+    right: 6px;
+    margin: 0 !important;
+}
+
+.time_ctn{
+    margin-top: 35px;
+}
+
+.access_code_ctn{
+    margin-top: 13px;
+}
+
+.return_time_txt, .access_code_txt{
+    color: #656565;
+    font-size: 11px;
+}
+
+.return_time_val, .access_code_val{
+    font-weight: bold;
+    color: white;    
 }
