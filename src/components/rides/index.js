@@ -8,12 +8,12 @@ import Ride from '../ride';
 import './style.css'
 
 const Rides = () => {
-    let history = useHistory();
     const detectMobile = useMobileDetect();
     const [rides, setRides] = useState([]);
     const [pin, setPin] = useState(getPinCode());
     const [selectedRideId, setSelectedRideId] = useState(null);
     const [message, setMessage] = useState('');
+    let history = useHistory();
     let ridesDataCtnRef = useRef();
     let submitBtnRef = useRef();
     let messageRef = useRef();

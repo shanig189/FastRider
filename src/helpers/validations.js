@@ -45,9 +45,9 @@ export const isValidPinCode = (pin) => {
       sumArray[sumIndex] = (sumArray[sumIndex] % 26) + 65;
     }
 
-    let lastLetters = `${String.fromCharCode(sumArray[0].toString())}${String.fromCharCode(sumArray[1].toString())}`;
+    const lastLetters = `${String.fromCharCode(sumArray[0].toString())}${String.fromCharCode(sumArray[1].toString())}`;
 
-    isValidPin =  lastLetters === splitedPin[3];
+    isValidPin = lastLetters === splitedPin[3];
 
   }
 
